@@ -7,13 +7,13 @@ int calcularPremio(int aposta, int numeroApostado, int numeroSorteado) {
 
     if (numeroApostado == numeroSorteado) {
         lucro = 5 * aposta;
-    } else if (numeroApostado == (numeroSorteado % 10 * 10 + numeroSorteado / 10)) {
+    } else if (numeroApostado == ((numeroSorteado % 10) * 10 + (numeroSorteado / 10))) {
+        lucro = 2 * aposta;
+    } else if (numeroApostado / 10 == (numeroSorteado / 10) % 10) {
+        lucro = 2 * aposta;
+    } else if (numeroApostado % 10 == numeroSorteado % 10) {
         lucro = 3 * aposta;
-    } else if (numeroApostado == (numeroSorteado / 10 * 10)) {
-        lucro = 2 * aposta;
-    } else if (numeroApostado == (numeroSorteado % 10)) {
-        lucro = 2 * aposta;
-    } else if (numeroApostado == (numeroSorteado % 10 + numeroSorteado / 10)) {
+	} else if (numeroApostado == (numeroSorteado % 10) + (numeroSorteado / 10)) {
         lucro = 2 * aposta;
     } else if (numeroApostado % 2 == numeroSorteado % 2) {
         lucro = aposta;
@@ -29,8 +29,8 @@ int main() {
 
     while (1) {
         // Sorteia um novo número
-        numeroSorteado = rand() % 50 + 1;  // Números de 1 a 50
-
+        //numeroSorteado = rand() % 50 + 1;  // Números de 1 a 50
+		numeroSorteado = 22;
         // Solicita ao usuário o valor em Kwanzas para a aposta e o número a ser apostado
         printf("Digite o valor em Kwanzas para a aposta (ou 0 para sair): ");
         scanf("%d", &aposta);
