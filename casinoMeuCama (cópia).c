@@ -2,41 +2,39 @@
 #include <stdlib.h>
 #include <time.h>
 
-
-
 int main() {
-    srand(time(NULL));  // Inicializa a semente para a fun��o rand()
+    srand(time(NULL));  // Inicializa a semente para a função rand()
 
-    int aposta, numeroApostado, numeroSorteado, lucro = 0, jogada = 0;
+    int aposta, numeroApostado, numeroSorteado, lucro = 0, jogada = 1;
 
     while (1) {
-
-        for (int i = 0; numeroApostado != 0; i++){
+        for (int i = 0; ; i++) {
             jogada = jogada + i;
-            printf("Jogada\n %d", jogada);
+            printf("Jogada %d\n", jogada);
 
-            //numeroSorteado = rand() % 50 + 1;  // N�meros de 1 a 50
-            numeroSorteado = 22;
-            printf("Quantia Apostada: KZ\n ");
+            // numeroSorteado = rand() % 50 + 1;  // Números de 1 a 50
+            numeroSorteado = 21;
+            printf("Quantia Apostada: KZ ");
             scanf("%d", &aposta);
 
-            // Verifica se o usu�rio deseja sair do jogo
+            // Verifica se o usuário deseja sair do jogo
             if (aposta == 0) {
                 printf("Jogo encerrado. Obrigado por jogar!\n");
-                break;
+                return 0;
             }
 
-            printf("Numero Apostado\n: ");
+            printf("Numero Apostado: ");
             scanf("%d", &numeroApostado);
 
-            // Verifica se o n�mero apostado est� dentro do intervalo permitido
-            if (numeroApostado < 1)
-                if(numeroApostado > 50) {
-                printf("N�mero apostado fora do intervalo permitido. Tente novamente.\n");
+            printf("Numero Sorteado: \n %d", numeroSorteado);
+
+            // Verifica se o número apostado está dentro do intervalo permitido
+            if (numeroApostado < 1 || numeroApostado > 50) {
+                printf("Número apostado fora do intervalo permitido. Tente novamente.\n");
                 continue;
             }
 
-                
+            // Calcula o prêmio
             if (numeroApostado == numeroSorteado) {
                 lucro = 5 * aposta;
             } else if (numeroApostado == ((numeroSorteado % 10) * 10 + (numeroSorteado / 10))) {
@@ -51,22 +49,12 @@ int main() {
                 lucro = aposta;
             }
 
-
-
-
-            // Calcula o pr�mio e imprime o resultado
-            int premio = calcularPremio(aposta, numeroApostado, numeroSorteado);
-
-            if (premio > aposta) {
-                printf("Parab�ns! Voc� ganhou Kz %d. N�mero sorteado: %d\n", premio - aposta, numeroSorteado);
-            } else {
-                printf("Infelizmente, voc� perdeu Kz %d. N�mero sorteado: %d\n", aposta - premio, numeroSorteado);
-            }
+            // Imprime o resultado
+            printf("Prêmio = %d\n", lucro);
         }
-
-
     }
-        
+
     return 0;
 }
+
 
