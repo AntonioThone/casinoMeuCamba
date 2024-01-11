@@ -13,7 +13,7 @@ int main() {
             printf("Jogada %d\n", jogada);
 
             // numeroSorteado = rand() % 50 + 1;  // Números de 1 a 50
-            numeroSorteado = 21;
+            numeroSorteado = 8;
             printf("Quantia Apostada: KZ ");
             scanf("%d", &aposta);
 
@@ -26,7 +26,7 @@ int main() {
             printf("Numero Apostado: ");
             scanf("%d", &numeroApostado);
 
-            printf("Numero Sorteado: \n %d", numeroSorteado);
+            printf("Numero Sorteado:\n%d", numeroSorteado);
 
             // Verifica se o número apostado está dentro do intervalo permitido
             if (numeroApostado < 1 || numeroApostado > 50) {
