@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-int calcularPremio(int aposta, int numeroApostado, int numeroSorteado) {
-    int lucro = 0;
 
     if (numeroApostado == numeroSorteado) {
         lucro = 5 * aposta;
@@ -19,13 +17,12 @@ int calcularPremio(int aposta, int numeroApostado, int numeroSorteado) {
         lucro = aposta;
     }
 
-    return lucro;
-}
+
 
 int main() {
     srand(time(NULL));  // Inicializa a semente para a fun��o rand()
 
-    int aposta, numeroApostado, numeroSorteado;
+    int aposta, numeroApostado, numeroSorteado, lucro = 0;
 
     while (1) {
         //numeroSorteado = rand() % 50 + 1;  // N�meros de 1 a 50
