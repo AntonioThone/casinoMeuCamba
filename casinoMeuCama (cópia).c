@@ -7,10 +7,15 @@
 int main() {
     srand(time(NULL));  // Inicializa a semente para a fun��o rand()
 
-    int aposta, numeroApostado, numeroSorteado, lucro = 0;
+    int aposta, numeroApostado, numeroSorteado, lucro = 0, jogada = 0;
 
     while (1) {
-        //numeroSorteado = rand() % 50 + 1;  // N�meros de 1 a 50
+
+        for (int i = 0; numeroApostado != 0; i++){
+            jogada = jogada + i;
+            printf("Jogada\n %d", jogada);
+
+            //numeroSorteado = rand() % 50 + 1;  // N�meros de 1 a 50
 		numeroSorteado = 22;
         printf("Quantia Apostada: KZ\n ");
         scanf("%d", &aposta);
@@ -59,6 +64,9 @@ int main() {
         }
     }
 
+
+        }
+        
     return 0;
 }
 
