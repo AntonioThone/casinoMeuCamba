@@ -5,15 +5,17 @@
 int main() {
     srand(time(NULL));  // Inicializa a semente para a função rand()
 
-    int aposta, numeroApostado, numeroSorteado, lucro = 0, jogada = 1;
+    int aposta, casinoPaga, numeroApostado, numeroSorteado, lucro, jogada = 1;
 
     while (1) {
-        for (int i = 0; ; i++) {
-            jogada = jogada + i;
+        for (int i = 1; ; i++) {
+            jogada = i;
+
+            printf("-------------------------------------------------\n");
             printf("Jogada %d\n", jogada);
 
-            // numeroSorteado = rand() % 50 + 1;  // Números de 1 a 50
-            numeroSorteado = 8;
+            numeroSorteado = rand() % 50 + 1;  // Números de 1 a 50
+            //numeroSorteado = 12;
             printf("Quantia Apostada: KZ ");
             scanf("%d", &aposta);
 
@@ -26,7 +28,7 @@ int main() {
             printf("Numero Apostado: ");
             scanf("%d", &numeroApostado);
 
-            printf("Numero Sorteado:\n%d", numeroSorteado);
+            printf("Numero Sorteado:%d\n", numeroSorteado);
 
             // Verifica se o número apostado está dentro do intervalo permitido
             if (numeroApostado < 1 || numeroApostado > 50) {
@@ -36,21 +38,26 @@ int main() {
 
             // Calcula o prêmio
             if (numeroApostado == numeroSorteado) {
-                lucro = 5 * aposta;
+                casinoPaga = 5 * aposta;
+                printf("Jogador acertou no numero sorteado\n");
             } else if (numeroApostado == ((numeroSorteado % 10) * 10 + (numeroSorteado / 10))) {
-                lucro = 2 * aposta;
+                casinoPaga = 2 * aposta;
+                printf("Jogo encerrado. Ob\n");
             } else if (numeroApostado / 10 == (numeroSorteado / 10) % 10) {
-                lucro = 2 * aposta;
+                casinoPaga = 2 * aposta;
             } else if (numeroApostado % 10 == numeroSorteado % 10) {
-                lucro = 3 * aposta;
+                casinoPaga = 3 * aposta;
             } else if (numeroApostado == (numeroSorteado % 10) + (numeroSorteado / 10)) {
-                lucro = 2 * aposta;
+                casinoPaga = 2 * aposta;
             } else if (numeroApostado % 2 == numeroSorteado % 2) {
-                lucro = aposta;
+                casinoPaga = aposta;
             }
 
-            // Imprime o resultado
-            printf("Prêmio = %d\n", lucro);
+            lucro = casinoPaga - aposta;
+            printf("-------------------------------------------------\n");
+            printf("Casino Pagou: Kz%d\n", casinoPaga);
+            printf("Jogador Ganhou: Kz%d\n", lucro);
+
         }
     }
 
