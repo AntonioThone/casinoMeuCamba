@@ -3,21 +3,6 @@
 #include <time.h>
 
 
-    if (numeroApostado == numeroSorteado) {
-        lucro = 5 * aposta;
-    } else if (numeroApostado == ((numeroSorteado % 10) * 10 + (numeroSorteado / 10))) {
-        lucro = 2 * aposta;
-    } else if (numeroApostado / 10 == (numeroSorteado / 10) % 10) {
-        lucro = 2 * aposta;
-    } else if (numeroApostado % 10 == numeroSorteado % 10) {
-        lucro = 3 * aposta;
-	} else if (numeroApostado == (numeroSorteado % 10) + (numeroSorteado / 10)) {
-        lucro = 2 * aposta;
-    } else if (numeroApostado % 2 == numeroSorteado % 2) {
-        lucro = aposta;
-    }
-
-
 
 int main() {
     srand(time(NULL));  // Inicializa a semente para a fun��o rand()
@@ -27,7 +12,7 @@ int main() {
     while (1) {
         //numeroSorteado = rand() % 50 + 1;  // N�meros de 1 a 50
 		numeroSorteado = 22;
-        printf("Digite o valor em Kwanzas para a aposta (ou 0 para sair): ");
+        printf("Quantia Apostada: KZ\n ");
         scanf("%d", &aposta);
 
         // Verifica se o usu�rio deseja sair do jogo
@@ -36,14 +21,33 @@ int main() {
             break;
         }
 
-        printf("Digite o n�mero apostado (entre 1 e 50): ");
+        printf("Numero Apostado\n: ");
         scanf("%d", &numeroApostado);
 
         // Verifica se o n�mero apostado est� dentro do intervalo permitido
-        if (numeroApostado < 1 || numeroApostado > 50) {
+        if (numeroApostado < 1)
+            if(numeroApostado > 50) {
             printf("N�mero apostado fora do intervalo permitido. Tente novamente.\n");
             continue;
         }
+
+            
+        if (numeroApostado == numeroSorteado) {
+            lucro = 5 * aposta;
+        } else if (numeroApostado == ((numeroSorteado % 10) * 10 + (numeroSorteado / 10))) {
+            lucro = 2 * aposta;
+        } else if (numeroApostado / 10 == (numeroSorteado / 10) % 10) {
+            lucro = 2 * aposta;
+        } else if (numeroApostado % 10 == numeroSorteado % 10) {
+            lucro = 3 * aposta;
+        } else if (numeroApostado == (numeroSorteado % 10) + (numeroSorteado / 10)) {
+            lucro = 2 * aposta;
+        } else if (numeroApostado % 2 == numeroSorteado % 2) {
+            lucro = aposta;
+        }
+
+
+
 
         // Calcula o pr�mio e imprime o resultado
         int premio = calcularPremio(aposta, numeroApostado, numeroSorteado);
