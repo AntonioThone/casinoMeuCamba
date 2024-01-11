@@ -23,40 +23,38 @@ int calcularPremio(int aposta, int numeroApostado, int numeroSorteado) {
 }
 
 int main() {
-    srand(time(NULL));  // Inicializa a semente para a função rand()
+    srand(time(NULL));  // Inicializa a semente para a funï¿½ï¿½o rand()
 
     int aposta, numeroApostado, numeroSorteado;
 
     while (1) {
-        // Sorteia um novo número
-        //numeroSorteado = rand() % 50 + 1;  // Números de 1 a 50
+        //numeroSorteado = rand() % 50 + 1;  // Nï¿½meros de 1 a 50
 		numeroSorteado = 22;
-        // Solicita ao usuário o valor em Kwanzas para a aposta e o número a ser apostado
         printf("Digite o valor em Kwanzas para a aposta (ou 0 para sair): ");
         scanf("%d", &aposta);
 
-        // Verifica se o usuário deseja sair do jogo
+        // Verifica se o usuï¿½rio deseja sair do jogo
         if (aposta == 0) {
             printf("Jogo encerrado. Obrigado por jogar!\n");
             break;
         }
 
-        printf("Digite o número apostado (entre 1 e 50): ");
+        printf("Digite o nï¿½mero apostado (entre 1 e 50): ");
         scanf("%d", &numeroApostado);
 
-        // Verifica se o número apostado está dentro do intervalo permitido
+        // Verifica se o nï¿½mero apostado estï¿½ dentro do intervalo permitido
         if (numeroApostado < 1 || numeroApostado > 50) {
-            printf("Número apostado fora do intervalo permitido. Tente novamente.\n");
+            printf("Nï¿½mero apostado fora do intervalo permitido. Tente novamente.\n");
             continue;
         }
 
-        // Calcula o prêmio e imprime o resultado
+        // Calcula o prï¿½mio e imprime o resultado
         int premio = calcularPremio(aposta, numeroApostado, numeroSorteado);
 
         if (premio > aposta) {
-            printf("Parabéns! Você ganhou Kz %d. Número sorteado: %d\n", premio - aposta, numeroSorteado);
+            printf("Parabï¿½ns! Vocï¿½ ganhou Kz %d. Nï¿½mero sorteado: %d\n", premio - aposta, numeroSorteado);
         } else {
-            printf("Infelizmente, você perdeu Kz %d. Número sorteado: %d\n", aposta - premio, numeroSorteado);
+            printf("Infelizmente, vocï¿½ perdeu Kz %d. Nï¿½mero sorteado: %d\n", aposta - premio, numeroSorteado);
         }
     }
 
