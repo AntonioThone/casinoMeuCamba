@@ -5,7 +5,7 @@
 int main() {
     srand(time(NULL));  // Inicializa a semente para a função rand()
 
-    int aposta, casinoPaga, numeroApostado, numeroSorteado, lucro, lucroJogada = 0, jogada = 1, prejuizo = 0;
+    int aposta, casinoPaga, numeroApostado, numeroSorteado, lucroJogada = 0, jogada = 1, prejuizoTotal = 0;
 
     while (1) {
         printf("-------------------------------------------------\n");
@@ -18,7 +18,7 @@ int main() {
 
         // Verifica se o usuário deseja sair do jogo
         if (aposta == 0) {
-            printf("Apos uma sequencia de %d jogadas, o jogador ganhou %d\n", jogada, lucroJogada);
+            printf("Apos uma sequencia de %d jogadas, o jogador tem um lucro de Kz%d\n", jogada - 1, lucroJogada);
             return 0;
         }
 
@@ -34,36 +34,56 @@ int main() {
             continue;
         }
 
-        // Calcula o prêmio
+        // Calcula a dezena dos números
+        int dezenaApostado = numeroApostado / 10;
+        int dezenaSorteado = numeroSorteado / 10;
+
+        // Inicializa o prêmio para a jogada atual
+        casinoPaga = 0;
+
+        // Verifica acertos e atualiza o prêmio
         if (numeroApostado == numeroSorteado) {
-            casinoPaga = 5 * aposta;
-            printf("Jogador acertou no numero sorteado\n");
-        } else if (numeroApostado == ((numeroSorteado % 10) * 10 + (numeroSorteado / 10))) {
-            casinoPaga = 3 * aposta;
-            printf("Jogador acertou na ordem inversa.\n");
-        } else if (numeroApostado / 10 == (numeroSorteado / 10)) {
-            casinoPaga = 2 * aposta;
-            printf("Jogador acertou na dezena.\n");
-        } else if (numeroApostado % 10 == numeroSorteado % 10) {
-            casinoPaga = 2 * aposta;
-            printf("Jogador acertou na unidade.\n");
-        } else if (numeroApostado == (numeroSorteado % 10) + (numeroSorteado / 10)) {
-            casinoPaga = 2 * aposta;
-            printf("Jogador acertou na soma dos digitos\n");
-        } else if (numeroApostado % 2 == numeroSorteado % 2) {
-            casinoPaga = aposta - aposta;
-            printf("Jogador acertou na paridade.\n");
-        } else {
-            prejuizo = prejuizo + aposta;
-            printf("Jogador nao acertou no numero sorteado.\n");
-            printf("---------------------------------------------\n");
-            printf("Ate agora o jogador tem prejuizo de: Kz%d\n", prejuizo);
+            casinoPaga += 5 * aposta;
+            printf("Jogador acertou no numero sorteado. ");
+        }
+        if (numeroApostado == (numeroSorteado % 10) * 10 + (numeroSorteado / 10)) {
+            casinoPaga += 3 * aposta;
+            printf("Jogador acertou na ordem inversa. ");
+        }
+        if (dezenaApostado == dezenaSorteado) {
+            casinoPaga += 2 * aposta;
+            printf("Jogador acertou na dezena. ");
+        }
+        if (numeroApostado % 10 == numeroSorteado % 10) {
+            casinoPaga += 2 * aposta;
+            printf("Jogador acertou na unidade. ");
+        }
+        if (numeroApostado == (numeroSorteado % 10) + (numeroSorteado / 10)) {
+            casinoPaga += 2 * aposta;
+            printf("Jogador acertou na soma dos digitos. ");
+        }
+        if (numeroApostado % 2 == numeroSorteado % 2) {
+            casinoPaga += aposta;
+            printf("Jogador acertou na paridade. ");
         }
 
-        lucro = casinoPaga - aposta;
+        // Calcula lucro ou prejuízo e atualiza os acumuladores
+        int resultado = casinoPaga - aposta;
+        lucroJogada += resultado;
+        prejuizoTotal += (resultado < 0) ? aposta : 0;
+
+        // Imprime os resultados
+        if (resultado >= 0) {
+            printf("Lucro na jogada: Kz%d\n", abs(resultado));
+        } else {
+            printf("Prejuizo na jogada: Kz%d\n", aposta);
+            printf("---------------------------------------------\n");
+            printf("Ate agora o jogador tem prejuizo total de: Kz%d\n", prejuizoTotal);
+        }
+
         printf("-------------------------------------------------\n");
         printf("Casino Pagou: Kz%d\n", casinoPaga);
-        printf("Jogador Ganhou: Kz%d\n", lucro);
+        printf("Jogador Ganhou: Kz%d\n", lucroJogada);
         printf("-------------------------------------------------\n");
         printf("Ate agora o jogador tem em lucro: KZ %d\n", lucroJogada);
 
