@@ -5,7 +5,7 @@
 int main() {
     srand(time(NULL));  // Inicializa a semente para a função rand()
 
-    int aposta, casinoPaga, numeroApostado, numeroSorteado, lucroJogada = 0, jogada = 1, prejuizoTotal = 0;
+    int aposta, casinoPaga, numeroApostado, numeroSorteado,lucroJogada = 0, jogada = 1, prejuizoTotal = 0;
 
     while (1) {
         printf("-------------------------------------------------\n");
@@ -29,10 +29,12 @@ int main() {
         printf("\n");
 
         // Verifica se o número apostado está dentro do intervalo permitido
-        if (numeroApostado < 1 || numeroApostado > 50) {
-            printf("Número apostado fora do intervalo permitido. Tente novamente.\n");
-            continue;
+        if (numeroApostado < 1) {
+            printf("Número apostado abaixo do intervalo permitido. Tente novamente.\n");
+        } else if (numeroApostado > 50) {
+            printf("Número apostado acima do intervalo permitido. Tente novamente.\n");
         }
+
 
         // Calcula a dezena dos números
         int dezenaApostado = numeroApostado / 10;
