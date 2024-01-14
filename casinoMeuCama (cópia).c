@@ -13,6 +13,7 @@ int main() {
         printf("\n");
 
         numeroSorteado = rand() % 50 + 1;
+        //numeroSorteado = 12;
         printf("Quantia Apostada: KZ ");
         scanf("%d", &aposta);
 
