@@ -72,7 +72,10 @@ int main() {
         // Calcula lucro ou prejuízo e atualiza os acumuladores
         int resultado = casinoPaga - aposta;
         lucroJogada += resultado;
-        prejuizoTotal += (resultado < 0) ? aposta : 0;
+        if (resultado < 0) {
+            prejuizoTotal += aposta;
+        }
+
 
         // Imprime os resultados
         if (resultado >= 0) {
