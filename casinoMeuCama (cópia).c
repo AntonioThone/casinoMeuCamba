@@ -74,7 +74,7 @@ int main() {
         lucroJogada += resultado;
         if (resultado < 0) {
             prejuizoTotal += aposta;
-        }
+        //}
 
 
         // Imprime os resultados
