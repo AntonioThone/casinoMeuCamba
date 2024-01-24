@@ -74,7 +74,7 @@ int main() {
         printf("-------------------------------------------------\n");
         printf("Ate agora o jogador tem em lucro: KZ %d\n", lucroJogada);
 
-        jogada++;
+        //jogada++;
     }
 
     return 0;
